@@ -57,9 +57,4 @@ clinic-landing-page/
 | Background | `#F8FAFC` |
 | Text       | `#1E293B` |
 
-## License
 
-MIT
-=======
-# MediCare-Clinic
->>>>>>> 58c65cb1ae735b9e105ea01bc2bdd514b432b7b8
