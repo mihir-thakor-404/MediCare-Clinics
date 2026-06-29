@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MediCare Plus Clinic — Premium healthcare with 25+ expert doctors, advanced medical technology, and 24/7 emergency care. Book your appointment today.">
+  <meta name="keywords" content="clinic, hospital, healthcare, doctors, appointment, cardiology, pediatrics, emergency care">
+  <meta name="author" content="MediCare Plus Clinic">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="MediCare Plus Clinic — Premium Healthcare">
+  <meta property="og:description" content="Experience world-class healthcare with experienced doctors and advanced medical technology.">
+  <meta property="og:type" content="website">
+  <title>MediCare Plus Clinic | Premium Healthcare Services</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- Swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#2563EB',
+            secondary: '#14B8A6',
+            accent: '#3B82F6',
+            surface: '#F8FAFC',
+            text: '#1E293B',
+          },
+          fontFamily: {
+            sans: ['Inter', 'Poppins', 'system-ui', 'sans-serif'],
+            display: ['Poppins', 'Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-surface text-text dark:bg-slate-900 dark:text-slate-100 font-sans antialiased overflow-x-hidden">
+
+  <!-- Loading Screen -->
+  <div id="loader" class="loader-screen" aria-hidden="true">
+    <div class="loader-content">
+      <div class="loader-logo">
+        <i class="fas fa-heartbeat text-primary text-4xl"></i>
+      </div>
+      <div class="loader-bar">
+        <div class="loader-progress"></div>
+      </div>
+      <p class="loader-text font-display font-semibold text-primary mt-4">MediCare Plus</p>
+    </div>
+  </div>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress" class="scroll-progress" role="progressbar" aria-label="Page scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+
+  <!-- Navigation -->
+  <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+    <nav class="nav-glass mx-4 mt-4 lg:mx-8 rounded-2xl px-4 lg:px-8" aria-label="Main navigation">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+        <!-- Logo -->
+        <a href="#home" class="flex items-center gap-3 group" aria-label="MediCare Plus Home">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+            <i class="fas fa-heartbeat text-white text-lg"></i>
+          </div>
+          <div>
+            <span class="font-display font-bold text-lg text-text dark:text-white leading-tight block">MediCare</span>
+            <span class="text-xs text-secondary font-semibold tracking-wider">PLUS CLINIC</span>
+          </div>
+        </a>
+
+        <!-- Desktop Menu -->
+        <ul class="hidden lg:flex items-center gap-1" role="list">
+          <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+          <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+          <li><a href="#specialties" class="nav-link" data-section="specialties">Specialties</a></li>
+          <li><a href="#facilities" class="nav-link" data-section="facilities">Facilities</a></li>
+          <li><a href="#doctors" class="nav-link" data-section="doctors">Doctors</a></li>
+          <li><a href="#testimonials" class="nav-link" data-section="testimonials">Reviews</a></li>
+          <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+        </ul>
+
+        <!-- Actions -->
+        <div class="flex items-center gap-3">
+          <button id="dark-mode-toggle" class="w-10 h-10 rounded-xl bg-white/80 dark:bg-slate-800/80 flex items-center justify-center shadow-sm hover:shadow-md transition-all duration-300" aria-label="Toggle dark mode">
+            <i class="fas fa-moon text-text dark:hidden"></i>
+            <i class="fas fa-sun text-yellow-400 hidden dark:inline"></i>
+          </button>
+          <button class="btn-primary hidden sm:flex ripple-btn" data-modal="appointment">
+             Contact Now
+          </button>
+          <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 rounded-xl bg-white/80 dark:bg-slate-800/80 flex items-center justify-center shadow-sm" aria-label="Open menu" aria-expanded="false">
+            <i class="fas fa-bars text-text dark:text-white"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="mobile-menu lg:hidden overflow-hidden max-h-0 transition-all duration-500">
+        <ul class="py-4 space-y-1 border-t border-slate-200/50 dark:border-slate-700/50" role="list">
+          <li><a href="#home" class="mobile-nav-link">Home</a></li>
+          <li><a href="#about" class="mobile-nav-link">About</a></li>
+          <li><a href="#specialties" class="mobile-nav-link">Specialties</a></li>
+          <li><a href="#facilities" class="mobile-nav-link">Facilities</a></li>
+          <li><a href="#doctors" class="mobile-nav-link">Doctors</a></li>
+          <li><a href="#testimonials" class="mobile-nav-link">Reviews</a></li>
+          <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+          <li class="pt-2 px-4">
+            <button class="btn-primary w-full ripple-btn" data-modal="appointment">
+              <i class="fas fa-calendar-check mr-2"></i> Contact Now
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
+      <div class="hero-bg absolute inset-0"></div>
+      <div class="hero-gradient absolute inset-0"></div>
+
+      <!-- Floating Icons -->
+      <div class="floating-icons" aria-hidden="true">
+        <div class="float-icon float-icon-1"><i class="fas fa-stethoscope"></i></div>
+        <div class="float-icon float-icon-2"><i class="fas fa-pills"></i></div>
+        <div class="float-icon float-icon-3"><i class="fas fa-syringe"></i></div>
+        <div class="float-icon float-icon-4"><i class="fas fa-heart-pulse"></i></div>
+        <div class="float-icon float-icon-5"><i class="fas fa-microscope"></i></div>
+      </div>
+
+      <div class="container mx-auto px-4 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+          <!-- Content -->
+          <div class="text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-full px-4 py-2 mb-6 shadow-sm" data-aos="fade-down" data-aos-duration="600">
+              <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+              <span class="text-sm font-medium text-text dark:text-slate-300">Trusted Healthcare Since 2014</span>
+            </div>
+            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6" data-aos="fade-up" data-aos-duration="700">
+              Your Health Is Our
+              <span class="gradient-text"> Top Priority</span>
+            </h1>
+            <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
+              Experience compassionate, world-class healthcare with our team of expert doctors and state-of-the-art medical facilities. We're here for you 24/7.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12" data-aos="fade-up" data-aos-delay="200" data-aos-duration="700">
+              <button class="btn-primary btn-lg ripple-btn" data-modal="appointment">
+                <i class="fas fa-calendar-check mr-2"></i> Book Appointment
+              </button>
+              <a href="#contact" class="btn-outline btn-lg ripple-btn">
+                <i class="fas fa-phone mr-2"></i> Contact Us
+              </a>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="300" data-aos-duration="700">
+              <div class="stat-card">
+                <div class="stat-number" data-count="10">0</div>
+                <div class="stat-label">Years Experience</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number" data-count="25">0</div>
+                <div class="stat-label">Expert Doctors</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number" data-count="10000">0</div>
+                <div class="stat-label">Happy Patients</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number" data-count="24">0</div>
+                <div class="stat-label">7 Emergency</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Image -->
+          <div class="relative" data-aos="fade-left" data-aos-duration="800">
+            <div class="hero-image-wrapper parallax-container">
+              <div class="hero-image-bg"></div>
+              <img
+                src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&h=700&fit=crop&crop=face"
+                alt="Professional doctor in white coat with stethoscope"
+                class="hero-doctor-img parallax-img"
+                loading="eager"
+                width="600"
+                height="700"
+              >
+              <div class="hero-badge hero-badge-1">
+                <i class="fas fa-check-circle text-secondary"></i>
+                <span>Certified Specialists</span>
+              </div>
+              <div class="hero-badge hero-badge-2">
+                <i class="fas fa-shield-heart text-primary"></i>
+                <span>100% Safe Care</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding bg-white dark:bg-slate-800/50">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <span class="section-tag">About Us</span>
+          <h2 class="section-title">Committed to Your <span class="gradient-text">Wellbeing</span></h2>
+          <p class="section-subtitle max-w-2xl mx-auto">Providing exceptional healthcare services with compassion, innovation, and dedication for over a decade.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
+          <div class="relative" data-aos="fade-right" data-aos-duration="700">
+            <div class="about-image-wrapper rounded-3xl overflow-hidden shadow-2xl">
+              <img
+                src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=700&h=500&fit=crop"
+                alt="Modern clinic interior with professional medical staff"
+                class="w-full h-auto object-cover lazy-img"
+                loading="lazy"
+                width="700"
+                height="500"
+              >
+            </div>
+            <div class="experience-badge">
+              <span class="exp-number" data-count="10">0</span><span class="exp-plus">+</span>
+              <span class="exp-text">Years of Excellence</span>
+            </div>
+          </div>
+
+          <div data-aos="fade-left" data-aos-duration="700">
+            <h3 class="font-display text-2xl font-bold mb-4 dark:text-white">Welcome to MediCare Plus Clinic</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+              Founded in 2014, MediCare Plus has grown into one of the region's most trusted healthcare providers. Our multidisciplinary team delivers comprehensive medical care across all specialties.
+            </p>
+
+            <div class="space-y-6 mb-8">
+              <div class="mission-card">
+                <div class="mission-icon bg-primary/10 text-primary">
+                  <i class="fas fa-bullseye"></i>
+                </div>
+                <div>
+                  <h4 class="font-display font-semibold text-lg mb-1 dark:text-white">Our Mission</h4>
+                  <p class="text-slate-600 dark:text-slate-400 text-sm">To deliver accessible, high-quality healthcare that improves lives and builds healthier communities.</p>
+                </div>
+              </div>
+              <div class="mission-card">
+                <div class="mission-icon bg-secondary/10 text-secondary">
+                  <i class="fas fa-eye"></i>
+                </div>
+                <div>
+                  <h4 class="font-display font-semibold text-lg mb-1 dark:text-white">Our Vision</h4>
+                  <p class="text-slate-600 dark:text-slate-400 text-sm">To be the leading healthcare institution recognized for clinical excellence and patient-centered care.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Achievement Cards -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="achievement-card" data-aos="zoom-in" data-aos-delay="0">
+            <i class="fas fa-award text-primary text-3xl mb-4"></i>
+            <h4 class="font-display font-bold text-3xl mb-1"><span data-count="15">0</span>+</h4>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">Awards Won</p>
+          </div>
+          <div class="achievement-card" data-aos="zoom-in" data-aos-delay="100">
+            <i class="fas fa-hospital text-secondary text-3xl mb-4"></i>
+            <h4 class="font-display font-bold text-3xl mb-1"><span data-count="8">0</span></h4>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">Departments</p>
+          </div>
+          <div class="achievement-card" data-aos="zoom-in" data-aos-delay="200">
+            <i class="fas fa-user-md text-accent text-3xl mb-4"></i>
+            <h4 class="font-display font-bold text-3xl mb-1"><span data-count="25">0</span>+</h4>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">Specialist Doctors</p>
+          </div>
+          <div class="achievement-card" data-aos="zoom-in" data-aos-delay="300">
+            <i class="fas fa-smile text-primary text-3xl mb-4"></i>
+            <h4 class="font-display font-bold text-3xl mb-1"><span data-count="98">0</span>%</h4>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">Patient Satisfaction</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Specialties Section -->
+    <section id="specialties" class="section-padding">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <span class="section-tag">Our Specialties</span>
+          <h2 class="section-title">Medical <span class="gradient-text">Specialties</span></h2>
+          <p class="section-subtitle max-w-2xl mx-auto">Comprehensive healthcare services across multiple medical disciplines.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" id="specialties-grid">
+          <!-- Generated by JS or static -->
+          <article class="service-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="service-icon"><i class="fas fa-user-doctor"></i></div>
+            <h3 class="service-title">General Medicine</h3>
+            <p class="service-desc">Comprehensive primary care for all ages with preventive health screenings.</p>
+            <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
+          </article>
+          <article class="service-card" data-aos="fade-up" data-aos-delay="50">
+            <div class="service-icon"><i class="fas fa-heart-pulse"></i></div>
+            <h3 class="service-title">Cardiology</h3>
+            <p class="service-desc">Advanced heart care including diagnostics, treatment, and rehabilitation.</p>
+            <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
+          </article>
+          <article class="service-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-icon"><i class="fas fa-bone"></i></div>
+            <h3 class="service-title">Orthopedics</h3>
+            <p class="service-desc">Expert treatment for bone, joint, and musculoskeletal conditions.</p>
+            <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
+          </article>
+          <article class="service-card" data-aos="fade-up" data-aos-delay="150">
+            <div class="service-icon"><i class="fas fa-baby"></i></div>
+            <h3 class="service-title">Pediatrics</h3>
+            <p class="service-desc">Specialized care for infants, children, and adolescents.</p>
+            <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
+          </article>
+          <article class="service-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-icon"><i class="fas fa-venus"></i></div>
+            <h3 class="service-title">Gynecology</h3>
+            <p class="service-desc">Complete women's health services from routine care to specialized treatment.</p>
+            <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
+          </article>
+          <article class="service-card" data-aos="fade-up" data-aos-delay="250">
+            <div class="service-icon"><i class="fas fa-brain"></i></div>
+            <h3 class="service-title">Neurology</h3>
+            <p class="service-desc">Diagnosis and treatment of neurological disorders and conditions.</p>
+            <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
+          </article>
+          <article class="service-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-icon"><i class="fas fa-tooth"></i></div>
+            <h3 class="service-title">Dentistry</h3>
+            <p class="service-desc">Full dental care including cosmetic, restorative, and preventive services.</p>
+            <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
+          </article>
+          <article class="service-card" data-aos="fade-up" data-aos-delay="350">
+            <div class="service-icon"><i class="fas fa-hand-dots"></i></div>
+            <h3 class="service-title">Dermatology</h3>
+            <p class="service-desc">Expert skin care for medical and cosmetic dermatological needs.</p>
+            <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section id="facilities" class="section-padding bg-white dark:bg-slate-800/50">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <span class="section-tag">Our Facilities</span>
+          <h2 class="section-title">World-Class <span class="gradient-text">Infrastructure</span></h2>
+          <p class="section-subtitle max-w-2xl mx-auto">State-of-the-art medical facilities equipped with the latest technology.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <article class="facility-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="facility-img-wrap">
+              <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1b?w=400&h=250&fit=crop" alt="Modern operation theatre" loading="lazy" class="lazy-img" width="400" height="250">
+              <div class="facility-overlay"><i class="fas fa-procedures"></i></div>
+            </div>
+            <div class="facility-content">
+              <h3>Modern Operation Theatre</h3>
+              <p>Advanced surgical suites with cutting-edge equipment for safe procedures.</p>
+            </div>
+          </article>
+          <article class="facility-card" data-aos="fade-up" data-aos-delay="50">
+            <div class="facility-img-wrap">
+              <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=400&h=250&fit=crop" alt="MRI scan machine" loading="lazy" class="lazy-img" width="400" height="250">
+              <div class="facility-overlay"><i class="fas fa-magnet"></i></div>
+            </div>
+            <div class="facility-content">
+              <h3>MRI Scan</h3>
+              <p>High-resolution magnetic resonance imaging for accurate diagnostics.</p>
+            </div>
+          </article>
+          <article class="facility-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="facility-img-wrap">
+              <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&h=250&fit=crop" alt="CT scan equipment" loading="lazy" class="lazy-img" width="400" height="250">
+              <div class="facility-overlay"><i class="fas fa-x-ray"></i></div>
+            </div>
+            <div class="facility-content">
+              <h3>CT Scan</h3>
+              <p>Advanced computed tomography for detailed internal imaging.</p>
+            </div>
+          </article>
+          <article class="facility-card" data-aos="fade-up" data-aos-delay="150">
+            <div class="facility-img-wrap">
+              <img src="https://images.unsplash.com/photo-1581595219315-a187dd40c322?w=400&h=250&fit=crop" alt="Digital X-Ray machine" loading="lazy" class="lazy-img" width="400" height="250">
+              <div class="facility-overlay"><i class="fas fa-radiation"></i></div>
+            </div>
+            <div class="facility-content">
+              <h3>Digital X-Ray</h3>
+              <p>Low-radiation digital radiography with instant results.</p>
+            </div>
+          </article>
+          <article class="facility-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="facility-img-wrap">
+              <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=400&h=250&fit=crop" alt="Intensive care unit" loading="lazy" class="lazy-img" width="400" height="250">
+              <div class="facility-overlay"><i class="fas fa-bed-pulse"></i></div>
+            </div>
+            <div class="facility-content">
+              <h3>ICU</h3>
+              <p>24/7 intensive care with advanced life support systems.</p>
+            </div>
+          </article>
+          <article class="facility-card" data-aos="fade-up" data-aos-delay="250">
+            <div class="facility-img-wrap">
+              <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=400&h=250&fit=crop" alt="Medical laboratory" loading="lazy" class="lazy-img" width="400" height="250">
+              <div class="facility-overlay"><i class="fas fa-flask"></i></div>
+            </div>
+            <div class="facility-content">
+              <h3>Laboratory</h3>
+              <p>Full-service diagnostic lab with rapid test results.</p>
+            </div>
+          </article>
+          <article class="facility-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="facility-img-wrap">
+              <img src="https://images.unsplash.com/photo-1587854692152-c264f5890a7e?w=400&h=250&fit=crop" alt="Pharmacy counter" loading="lazy" class="lazy-img" width="400" height="250">
+              <div class="facility-overlay"><i class="fas fa-pills"></i></div>
+            </div>
+            <div class="facility-content">
+              <h3>Pharmacy</h3>
+              <p>In-house pharmacy with all prescribed medications available.</p>
+            </div>
+          </article>
+          <article class="facility-card" data-aos="fade-up" data-aos-delay="350">
+            <div class="facility-img-wrap">
+              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=250&fit=crop" alt="Ambulance service" loading="lazy" class="lazy-img" width="400" height="250">
+              <div class="facility-overlay"><i class="fas fa-truck-medical"></i></div>
+            </div>
+            <div class="facility-content">
+              <h3>Ambulance Service</h3>
+              <p>Round-the-clock emergency ambulance with trained paramedics.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Doctors Section -->
+    <section id="doctors" class="section-padding">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <span class="section-tag">Our Team</span>
+          <h2 class="section-title">Meet Our <span class="gradient-text">Expert Doctors</span></h2>
+          <p class="section-subtitle max-w-2xl mx-auto">Highly qualified specialists dedicated to providing exceptional patient care.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <article class="doctor-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="doctor-img-wrap">
+              <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop&crop=face" alt="Dr. Sarah Mitchell" loading="lazy" class="lazy-img" width="400" height="400">
+              <div class="doctor-social">
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+            <div class="doctor-info">
+              <h3>Dr. Sarah Mitchell</h3>
+              <p class="doctor-qual">MD, FACC</p>
+              <p class="doctor-spec">Cardiologist</p>
+              <p class="doctor-exp"><i class="fas fa-clock mr-1"></i> 15 Years Experience</p>
+              <button class="btn-primary btn-sm w-full mt-4 ripple-btn" data-modal="appointment">Book Appointment</button>
+            </div>
+          </article>
+          <article class="doctor-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="doctor-img-wrap">
+              <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop&crop=face" alt="Dr. James Wilson" loading="lazy" class="lazy-img" width="400" height="400">
+              <div class="doctor-social">
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+            <div class="doctor-info">
+              <h3>Dr. James Wilson</h3>
+              <p class="doctor-qual">MD, MS Ortho</p>
+              <p class="doctor-spec">Orthopedic Surgeon</p>
+              <p class="doctor-exp"><i class="fas fa-clock mr-1"></i> 12 Years Experience</p>
+              <button class="btn-primary btn-sm w-full mt-4 ripple-btn" data-modal="appointment">Book Appointment</button>
+            </div>
+          </article>
+          <article class="doctor-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="doctor-img-wrap">
+              <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=400&fit=crop&crop=face" alt="Dr. Emily Chen" loading="lazy" class="lazy-img" width="400" height="400">
+              <div class="doctor-social">
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+            <div class="doctor-info">
+              <h3>Dr. Emily Chen</h3>
+              <p class="doctor-qual">MD, DCH</p>
+              <p class="doctor-spec">Pediatrician</p>
+              <p class="doctor-exp"><i class="fas fa-clock mr-1"></i> 10 Years Experience</p>
+              <button class="btn-primary btn-sm w-full mt-4 ripple-btn" data-modal="appointment">Book Appointment</button>
+            </div>
+          </article>
+          <article class="doctor-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="doctor-img-wrap">
+              <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&h=400&fit=crop&crop=face" alt="Dr. Michael Brown" loading="lazy" class="lazy-img" width="400" height="400">
+              <div class="doctor-social">
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+            <div class="doctor-info">
+              <h3>Dr. Michael Brown</h3>
+              <p class="doctor-qual">MD, DM Neurology</p>
+              <p class="doctor-spec">Neurologist</p>
+              <p class="doctor-exp"><i class="fas fa-clock mr-1"></i> 18 Years Experience</p>
+              <button class="btn-primary btn-sm w-full mt-4 ripple-btn" data-modal="appointment">Book Appointment</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-us" class="section-padding bg-gradient-section">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <span class="section-tag">Why Choose Us</span>
+          <h2 class="section-title">The MediCare <span class="gradient-text">Difference</span></h2>
+          <p class="section-subtitle max-w-2xl mx-auto">Discover why thousands of patients trust us with their health.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="feature-icon"><i class="fas fa-user-md"></i></div>
+            <h3>Experienced Doctors</h3>
+            <p>Board-certified specialists with decades of combined experience.</p>
+          </div>
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-icon"><i class="fas fa-microchip"></i></div>
+            <h3>Advanced Technology</h3>
+            <p>Cutting-edge medical equipment for precise diagnosis and treatment.</p>
+          </div>
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-icon"><i class="fas fa-hand-holding-medical"></i></div>
+            <h3>Affordable Healthcare</h3>
+            <p>Quality care at competitive prices with flexible payment options.</p>
+          </div>
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="feature-icon"><i class="fas fa-truck-medical"></i></div>
+            <h3>24/7 Emergency Care</h3>
+            <p>Round-the-clock emergency services when you need them most.</p>
+          </div>
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="feature-icon"><i class="fas fa-heart"></i></div>
+            <h3>Personalized Treatment</h3>
+            <p>Individual care plans tailored to your unique health needs.</p>
+          </div>
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="feature-icon"><i class="fas fa-users"></i></div>
+            <h3>Trusted by Thousands</h3>
+            <p>Over 10,000 satisfied patients and counting.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="section-padding bg-white dark:bg-slate-800/50">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <span class="section-tag">Testimonials</span>
+          <h2 class="section-title">What Our <span class="gradient-text">Patients Say</span></h2>
+          <p class="section-subtitle max-w-2xl mx-auto">Real stories from patients who experienced our exceptional care.</p>
+        </div>
+
+        <div class="swiper testimonial-swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper pb-12">
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <div class="testimonial-stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"The care I received at MediCare Plus was exceptional. Dr. Mitchell took the time to explain everything and made me feel comfortable throughout my treatment."</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face" alt="Jennifer Adams" loading="lazy" width="80" height="80">
+                  <div>
+                    <h4>Jennifer Adams</h4>
+                    <p><i class="fas fa-map-marker-alt mr-1"></i> New York, USA</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <div class="testimonial-stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"From the moment I walked in, I knew I was in good hands. The staff is professional, the facilities are modern, and the doctors truly care about their patients."</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Robert Johnson" loading="lazy" width="80" height="80">
+                  <div>
+                    <h4>Robert Johnson</h4>
+                    <p><i class="fas fa-map-marker-alt mr-1"></i> Boston, USA</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <div class="testimonial-stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"My daughter's pediatric care has been outstanding. Dr. Chen is patient, knowledgeable, and always available when we have concerns. Highly recommended!"</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" alt="Maria Garcia" loading="lazy" width="80" height="80">
+                  <div>
+                    <h4>Maria Garcia</h4>
+                    <p><i class="fas fa-map-marker-alt mr-1"></i> Miami, USA</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <div class="testimonial-stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"The emergency care team saved my life. Their quick response and expert treatment during my cardiac event was nothing short of miraculous."</p>
+                <div class="testimonial-author">
+                  <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="David Thompson" loading="lazy" width="80" height="80">
+                  <div>
+                    <h4>David Thompson</h4>
+                    <p><i class="fas fa-map-marker-alt mr-1"></i> Chicago, USA</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <span class="section-tag">Contact Us</span>
+          <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+          <p class="section-subtitle max-w-2xl mx-auto">We're here to help. Reach out to us for appointments, inquiries, or emergencies.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 mb-12">
+          <!-- Contact Info -->
+          <div data-aos="fade-right" data-aos-duration="700">
+            <div class="space-y-6 mb-8">
+              <div class="contact-info-card">
+                <div class="contact-icon"><i class="fas fa-location-dot"></i></div>
+                <div>
+                  <h4>Clinic Address</h4>
+                  <p>123 Healthcare Avenue, Medical District<br>New York, NY 10001, USA</p>
+                </div>
+              </div>
+              <div class="contact-info-card">
+                <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                <div>
+                  <h4>Phone Number</h4>
+                  <p><a href="tel:+18001234567">+1 (800) 123-4567</a></p>
+                </div>
+              </div>
+              <div class="contact-info-card">
+                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                <div>
+                  <h4>Email Address</h4>
+                  <p><a href="mailto:info@medicareplus.com">info@medicareplus.com</a></p>
+                </div>
+              </div>
+              <div class="contact-info-card">
+                <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                <div>
+                  <h4>Working Hours</h4>
+                  <p>Mon – Fri: 8:00 AM – 8:00 PM<br>Sat – Sun: 9:00 AM – 5:00 PM</p>
+                </div>
+              </div>
+              <div class="contact-info-card emergency">
+                <div class="contact-icon"><i class="fas fa-truck-medical"></i></div>
+                <div>
+                  <h4>Emergency Contact</h4>
+                  <p><a href="tel:+1800999111">+1 (800) 999-1111</a> — Available 24/7</p>
+                </div>
+              </div>
+            </div>
+            <button class="btn-primary btn-lg w-full sm:w-auto ripple-btn" data-modal="appointment">
+              <i class="fas fa-calendar-check mr-2"></i> Book Appointment
+            </button>
+          </div>
+
+          <!-- Contact Form -->
+          <div data-aos="fade-left" data-aos-duration="700">
+            <form id="contact-form" class="contact-form" novalidate>
+              <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" name="name" required placeholder="John Doe" autocomplete="name">
+              </div>
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" required placeholder="john@example.com" autocomplete="email">
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" required placeholder="+1 (555) 000-0000" autocomplete="tel">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="department">Department</label>
+                <select id="department" name="department" required>
+                  <option value="">Select Department</option>
+                  <option value="general">General Medicine</option>
+                  <option value="cardiology">Cardiology</option>
+                  <option value="orthopedics">Orthopedics</option>
+                  <option value="pediatrics">Pediatrics</option>
+                  <option value="gynecology">Gynecology</option>
+                  <option value="neurology">Neurology</option>
+                  <option value="dentistry">Dentistry</option>
+                  <option value="dermatology">Dermatology</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" required placeholder="How can we help you?"></textarea>
+              </div>
+              <button type="submit" class="btn-primary w-full ripple-btn">
+                <i class="fas fa-paper-plane mr-2"></i> Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Google Maps -->
+        <div class="map-container rounded-3xl overflow-hidden shadow-xl" data-aos="fade-up">
+          <iframe
+            src="https://maps.google.com/maps?q=New+York+Medical+District&output=embed"
+            title="MediCare Plus Clinic Location"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 py-16">
+        <!-- About -->
+        <div>
+          <a href="#home" class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+              <i class="fas fa-heartbeat text-white"></i>
+            </div>
+            <div>
+              <span class="font-display font-bold text-lg text-white leading-tight block">MediCare</span>
+              <span class="text-xs text-secondary font-semibold">PLUS CLINIC</span>
+            </div>
+          </a>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">Providing premium healthcare services with compassion and excellence since 2014.</p>
+          <div class="flex gap-3">
+            <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#specialties">Specialties</a></li>
+            <li><a href="#facilities">Facilities</a></li>
+            <li><a href="#doctors">Our Doctors</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h4 class="footer-heading">Medical Services</h4>
+          <ul class="footer-links">
+            <li><a href="#specialties">General Medicine</a></li>
+            <li><a href="#specialties">Cardiology</a></li>
+            <li><a href="#specialties">Orthopedics</a></li>
+            <li><a href="#specialties">Pediatrics</a></li>
+            <li><a href="#specialties">Neurology</a></li>
+            <li><a href="#specialties">Emergency Care</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact & Newsletter -->
+        <div>
+          <h4 class="footer-heading">Contact Info</h4>
+          <ul class="footer-contact">
+            <li><i class="fas fa-location-dot"></i> 123 Healthcare Ave, NY 10001</li>
+            <li><i class="fas fa-phone"></i> +1 (800) 123-4567</li>
+            <li><i class="fas fa-envelope"></i> info@medicareplus.com</li>
+            <li class="emergency-line"><i class="fas fa-truck-medical"></i> Emergency: +1 (800) 999-1111</li>
+          </ul>
+          <form id="newsletter-form" class="newsletter-form mt-6">
+            <label for="newsletter-email" class="sr-only">Email for newsletter</label>
+            <div class="flex gap-2">
+              <input type="email" id="newsletter-email" placeholder="Your email" required>
+              <button type="submit" aria-label="Subscribe"><i class="fas fa-paper-plane"></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 MediCare Plus Clinic. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/18001234567" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Appointment Modal -->
+  <!-- <div id="appointment-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close modal"><i class="fas fa-times"></i></button>
+      <h2 id="modal-title" class="font-display text-2xl font-bold mb-2 dark:text-white">Book an Appointment</h2>
+      <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm">Fill in your details and we'll get back to you shortly.</p>
+      <form id="appointment-form" novalidate>
+        <div class="form-group">
+          <label for="appt-name">Full Name</label>
+          <input type="text" id="appt-name" name="name" required placeholder="John Doe">
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="form-group">
+            <label for="appt-email">Email</label>
+            <input type="email" id="appt-email" name="email" required placeholder="john@example.com">
+          </div>
+          <div class="form-group">
+            <label for="appt-phone">Phone</label>
+            <input type="tel" id="appt-phone" name="phone" required placeholder="+1 (555) 000-0000">
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="form-group">
+            <label for="appt-date">Preferred Date</label>
+            <input type="date" id="appt-date" name="date" required>
+          </div>
+          <div class="form-group">
+            <label for="appt-dept">Department</label>
+            <select id="appt-dept" name="department" required>
+              <option value="">Select Department</option>
+              <option value="general">General Medicine</option>
+              <option value="cardiology">Cardiology</option>
+              <option value="orthopedics">Orthopedics</option>
+              <option value="pediatrics">Pediatrics</option>
+              <option value="gynecology">Gynecology</option>
+              <option value="neurology">Neurology</option>
+              <option value="dentistry">Dentistry</option>
+              <option value="dermatology">Dermatology</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="appt-message">Additional Notes</label>
+          <textarea id="appt-message" name="message" rows="3" placeholder="Any specific concerns?"></textarea>
+        </div>
+        <button type="submit" class="btn-primary w-full ripple-btn">
+          <i class="fas fa-calendar-check mr-2"></i> Confirm Booking
+        </button>
+      </form>
+    </div>
+  </div> -->
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast" role="alert" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
