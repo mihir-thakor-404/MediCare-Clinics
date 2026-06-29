@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # MediCare Plus Clinic — Landing Page
 
 A premium, modern, responsive single-page clinic landing page built with HTML5, Tailwind CSS, and vanilla JavaScript.
@@ -59,3 +60,6 @@ clinic-landing-page/
 ## License
 
 MIT
+=======
+# MediCare-Clinic
+>>>>>>> 58c65cb1ae735b9e105ea01bc2bdd514b432b7b8
