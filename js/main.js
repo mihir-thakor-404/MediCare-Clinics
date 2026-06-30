@@ -5,7 +5,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initLoader();
-  initAOS();
+  // initAOS();
   initSwiper();
   initNavbar();
   initScrollProgress();

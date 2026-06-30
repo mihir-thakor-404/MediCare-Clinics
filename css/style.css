@@ -81,6 +81,10 @@
   transition: width 0.1s linear;
 }
 
+body{
+  overflow-x: hidden !important;
+}
+
 /* ---- Navigation ---- */
 .nav-glass {
   background: rgba(255, 255, 255, 0.75);
@@ -95,7 +99,9 @@
   background: rgba(15, 23, 42, 0.8);
   border-color: rgba(255, 255, 255, 0.08);
 }
-
+#navbar{
+  overflow-x: hidden !important;
+}
 #navbar.scrolled .nav-glass {
   background: rgba(255, 255, 255, 0.95);
   box-shadow: var(--shadow-md);
